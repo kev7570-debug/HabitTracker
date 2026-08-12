@@ -27,10 +27,10 @@ INSTALLED_APPS = [
 
     # Third-party apps
     'rest_framework',
-    'rest_framework_simplejwt',
+    # 'rest_framework_simplejwt',
     'corsheaders',
-    'drf_yasg',
-    'django_celery_beat',
+    # 'drf_yasg',
+    # 'django_celery_beat',
 
     # Local apps
     'users',
