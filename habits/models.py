@@ -52,6 +52,10 @@ class Habit(models.Model):
         default=False,
         verbose_name="Признак публичности"
     )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="Активна"
+    )
 
     def __str__(self):
         return f"{self.action} в {self.time} в {self.place}"
