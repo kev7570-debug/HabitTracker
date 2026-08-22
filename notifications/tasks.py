@@ -13,9 +13,8 @@ def send_habit_notification(habit_id):
         print(f"Привычка с ID {habit_id} не найдена или неактивна")
         return
 
-    # Пока используем заглушку для chat_id
-    # Позже добавим модель TelegramUser
-    chat_id = settings.TELEGRAM_CHAT_ID  # временно
+
+    chat_id = settings.TELEGRAM_CHAT_ID
 
     if not chat_id:
         print("Chat ID не указан")

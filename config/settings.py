@@ -159,4 +159,4 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # Telegram
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
-TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')  # временно
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')
