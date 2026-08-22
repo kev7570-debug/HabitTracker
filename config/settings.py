@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     # 'drf_yasg',
-    # 'django_celery_beat',
+    'django_celery_beat',
 
     # Local apps
     'users',
@@ -159,3 +159,4 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # Telegram
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')  # временно
