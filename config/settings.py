@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_filters',
-    # 'drf_yasg',
+    'drf_yasg',
     'django_celery_beat',
 
     # Local apps
