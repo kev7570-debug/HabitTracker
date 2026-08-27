@@ -1,4 +1,4 @@
-from django.db import models
+# from django.db import models
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import action
@@ -21,12 +21,17 @@ class HabitViewSet(viewsets.ModelViewSet):
     filterset_fields = ['is_public', 'is_pleasant', 'is_active']
     ordering_fields = ['time', 'periodicity']
 
+    # def get_queryset(self):
+    #     """Возвращаем привычки пользователя ИЛИ публичные."""
+    #     user = self.request.user
+    #     return Habit.objects.filter(
+    #         models.Q(user=user) | models.Q(is_public=True, is_active=True)
+    #     ).distinct()
+
     def get_queryset(self):
-        """Возвращаем привычки пользователя ИЛИ публичные."""
+        """Возвращаем только свои привычки."""
         user = self.request.user
-        return Habit.objects.filter(
-            models.Q(user=user) | models.Q(is_public=True, is_active=True)
-        ).distinct()
+        return Habit.objects.filter(user=user, is_active=True)
 
     def perform_create(self, serializer):
         """При создании проставляем пользователя."""

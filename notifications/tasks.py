@@ -2,6 +2,7 @@ from celery import shared_task
 import requests
 from django.conf import settings
 from habits.models import Habit
+from .models import TelegramUser
 
 
 @shared_task
@@ -13,11 +14,16 @@ def send_habit_notification(habit_id):
         print(f"Привычка с ID {habit_id} не найдена или неактивна")
         return
 
-
-    chat_id = settings.TELEGRAM_CHAT_ID
+# Получаем chat_id из модели TelegramUser
+    try:
+        telegram_user = TelegramUser.objects.get(user=habit.user)
+        chat_id = telegram_user.chat_id
+    except TelegramUser.DoesNotExist:
+        print(f"У пользователя {habit.user.email} не привязан Telegram")
+        return
 
     if not chat_id:
-        print("Chat ID не указан")
+        print("Chat ID не найден")
         return
 
     message = (
