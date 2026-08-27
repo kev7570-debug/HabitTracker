@@ -157,6 +157,14 @@ CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
+# Celery Beat schedule
+CELERY_BEAT_SCHEDULE = {
+    'check-habits-every-10-minutes': {
+        'task': 'habits.tasks.check_habits',
+        'schedule': 600.0,  # 10 минут
+    },
+}
+
 # Telegram
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')

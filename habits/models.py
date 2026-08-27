@@ -57,6 +57,12 @@ class Habit(models.Model):
         verbose_name="Активна"
     )
 
+    last_notified = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name="Последнее уведомление"
+    )
+
     def __str__(self):
         return f"{self.action} в {self.time} в {self.place}"
 
