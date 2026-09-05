@@ -53,10 +53,8 @@ jobs:
         run: python manage.py migrate
         env:
           GITHUB_ACTIONS: true
-          DB_NAME: db.sqlite3
-          DB_HOST: localhost
-          DB_USER: ''
-          DB_PASSWORD: ''
+          SECRET_KEY: dummy-secret-key-for-ci
+
 
       - name: Run tests with coverage
         run: |
@@ -64,10 +62,8 @@ jobs:
           coverage report
         env:
           GITHUB_ACTIONS: true
-          DB_NAME: db.sqlite3
-          DB_HOST: localhost
-          DB_USER: ''
-          DB_PASSWORD: ''
+          SECRET_KEY: dummy-secret-key-for-ci
+
 
   build:
     name: Build Docker images
