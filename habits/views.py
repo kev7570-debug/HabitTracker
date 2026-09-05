@@ -69,6 +69,7 @@ from .serializers import HabitSerializer
 from .permissions import IsOwnerOrReadOnly
 from .pagination import HabitPagination
 
+
 class HabitViewSet(viewsets.ModelViewSet):
     """ViewSet для привычек"""
     serializer_class = HabitSerializer
