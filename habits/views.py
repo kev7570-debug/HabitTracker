@@ -10,7 +10,8 @@ from .models import Habit
 from .serializers import HabitSerializer
 from .permissions import IsOwnerOrReadOnly
 from .pagination import HabitPagination
-
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 class HabitViewSet(viewsets.ModelViewSet):
     """ViewSet для привычек"""
@@ -49,3 +50,9 @@ class HabitViewSet(viewsets.ModelViewSet):
         habits = Habit.objects.filter(is_public=True, is_active=True)
         serializer = self.get_serializer(habits, many=True)
         return Response(serializer.data)
+
+@csrf_exempt
+def public_habits_list(request):
+    habits = Habit.objects.filter(is_public=True, is_active=True)
+    data = list(habits.values('id', 'action', 'place', 'time', 'is_pleasant', 'periodicity'))
+    return JsonResponse(data, safe=False)
