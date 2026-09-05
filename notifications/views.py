@@ -28,4 +28,3 @@ class TelegramConnectView(APIView):
             {'message': 'Telegram привязан', 'chat_id': chat_id},
             status=status.HTTP_200_OK
         )
-    

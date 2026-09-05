@@ -46,4 +46,3 @@ def send_habit_notification(habit_id):
         print(f"Уведомление отправлено для привычки {habit_id}")
     except Exception as e:
         print(f"Ошибка при отправке: {e}")
-        

@@ -62,6 +62,7 @@ class HabitModelTest(TestCase):
         """Тест: периодичность по умолчанию = 1 день"""
         self.assertEqual(self.habit.periodicity, 1)
 
+
 class HabitSerializerTest(TestCase):
     """Тесты для сериализатора HabitSerializer"""
 
