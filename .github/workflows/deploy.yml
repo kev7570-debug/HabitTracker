@@ -78,8 +78,8 @@ jobs:
 
       - name: Install docker-compose
         run: |
-          sudo apt update
-          sudo apt install docker-compose -y
+          pip install docker-compose
+          docker-compose --version
 
       - name: Build images
         run: |
