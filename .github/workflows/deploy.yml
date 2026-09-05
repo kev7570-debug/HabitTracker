@@ -76,9 +76,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Install docker-compose
+        run: |
+          sudo apt update
+          sudo apt install docker-compose -y
+
       - name: Build images
         run: |
-          docker compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml build
 
   deploy:
     name: Deploy to server
@@ -117,6 +122,6 @@ jobs:
           echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> .env
           echo "TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}" >> .env
 
-          docker compose down --volumes || true
-          docker compose up -d --build
+          docker-compose down --volumes || true
+          docker-compose up -d --build
           EOF
